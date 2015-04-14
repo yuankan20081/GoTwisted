@@ -4,6 +4,7 @@ package gotwisted
 import (
 	"fmt"
 	"github.com/yuankan20081/gotwisted/factory"
+	"github.com/yuankan20081/gotwisted/session"
 	"net"
 )
 
@@ -46,8 +47,9 @@ func (r *Reactor) handleConn(conn net.Conn) {
 	defer conn.Close()
 
 	clientSession := r.sessionFactory.BuildSession(conn)
-	if clientSession.OnConnect != nil {
-		clientSession.OnConnect(conn.RemoteAddr())
+
+	if onConnecter, ok := clientSession.(session.OnConnecter); ok {
+		onConnecter.OnConnect(conn.RemoteAddr())
 	}
 
 	buf := make([]byte, 4096)
@@ -61,7 +63,7 @@ func (r *Reactor) handleConn(conn net.Conn) {
 		clientSession.OnPacketParsed(packet)
 	}
 
-	if clientSession.OnDisconnect != nil {
-		clientSession.OnDisconnect()
+	if onDisconnecter, ok := clientSession.(session.OnDisconnecter); ok {
+		onDisconnecter.OnDisconnect()
 	}
 }
