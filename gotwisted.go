@@ -3,7 +3,7 @@ package gotwisted
 
 import (
 	"fmt"
-	"gotwisted/factory"
+	"github.com/yuankan20081/gotwisted/factory"
 	"net"
 )
 
