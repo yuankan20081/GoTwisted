@@ -1,7 +1,7 @@
 package factory
 
 import (
-	"github.com/yuankan20081/gotwisted/session"
+	"gotwisted/session"
 	"net"
 )
 
