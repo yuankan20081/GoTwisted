@@ -10,5 +10,4 @@ type IFactory interface {
 }
 
 type FactoryBase struct {
-	IFactory
 }

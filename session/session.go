@@ -20,6 +20,5 @@ type ISession interface {
 }
 
 type SessionBase struct {
-	ISession
 	Transport net.Conn
 }

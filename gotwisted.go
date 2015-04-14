@@ -45,12 +45,8 @@ func (r *Reactor) handleConn(conn net.Conn) {
 		}
 	}()
 	defer conn.Close()
-
 	clientSession := r.sessionFactory.BuildSession(conn)
-
-	if onConnecter, ok := clientSession.(session.OnConnecter); ok {
-		onConnecter.OnConnect(conn.RemoteAddr())
-	}
+	clientSession.OnConnect(conn.RemoteAddr())
 
 	buf := make([]byte, 4096)
 
@@ -63,7 +59,5 @@ func (r *Reactor) handleConn(conn net.Conn) {
 		clientSession.OnPacketParsed(packet)
 	}
 
-	if onDisconnecter, ok := clientSession.(session.OnDisconnecter); ok {
-		onDisconnecter.OnDisconnect()
-	}
+	clientSession.OnDisconnect()
 }
