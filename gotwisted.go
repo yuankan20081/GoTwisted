@@ -4,7 +4,6 @@ package gotwisted
 import (
 	"fmt"
 	"github.com/yuankan20081/gotwisted/factory"
-	"github.com/yuankan20081/gotwisted/session"
 	"net"
 )
 
