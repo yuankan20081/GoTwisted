@@ -4,13 +4,12 @@ package main
 import (
 	"fmt"
 	"github.com/yuankan20081/gotwisted"
-	"github.com/yuankan20081/gotwisted/factory"
 	"github.com/yuankan20081/gotwisted/session"
 	"net"
 )
 
 type MySession struct {
-	session.SessionBase // this is not necessary
+	gotwisted.SessionBase // this is not necessary
 }
 
 func (ms *MySession) ParsePacket(conn net.Conn, buffer []byte) ([]byte, error) {
@@ -35,7 +34,7 @@ func (ms *MySession) OnDisconnect() {
 }
 
 type MyFactory struct {
-	factory.FactoryBase // this is not necessary
+	gotwisted.FactoryBase // this is not necessary
 }
 
 func (mf *MyFactory) BuildSession(conn net.Conn) session.ISession {

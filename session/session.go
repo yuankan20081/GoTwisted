@@ -18,7 +18,3 @@ type ISession interface {
 	OnPacketParsed(data []byte)
 	ParsePacket(conn net.Conn, buffer []byte) ([]byte, error)
 }
-
-type SessionBase struct {
-	Transport net.Conn
-}

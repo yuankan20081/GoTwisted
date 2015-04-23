@@ -8,6 +8,3 @@ import (
 type IFactory interface {
 	BuildSession(conn net.Conn) session.ISession
 }
-
-type FactoryBase struct {
-}
